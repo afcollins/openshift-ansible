@@ -66,6 +66,10 @@
     src: "{{ openshift_master_config_dir }}/service-signer.crt"
   register: __ca_bundle
 
+- name: Pause to check servicecatalog API is available.
+  pause:
+    prompt: Check whether clusterservicebroker resource can be found (run oc get clusterservicebroker)
+
 # Register with broker
 - name: Register TSB with broker
   shell: >
